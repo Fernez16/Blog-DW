@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="tp, desarrollo, blog" />
+    <meta name="author" content="Fernez-Gomez" />
+    <title>Inicio - F.G. BLOG</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css" />
+    <style>
+        #reloj {
+            font-size: 1.2em;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #countdown {
+            font-size: 1.5em;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>F.G. BLOG</h1>
+        <div class="isc">
+            <ul>
+                <a href="inicio.html">Inicio</a>
+                <a href="sobre-nosotros.html">Sobre nosotros</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="cuestionario.html">Cuestionario</a>
+            </ul>
+        </div>
+    </header>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="profile">
+                <img src="../FG.png" alt="Logo del grupo" />
+                <p>Estudiantes de Desarrollo Web</p>
+            </div>
+            <div class="additional-info">
+                <section>
+                    <h3>Favoritos</h3>
+                    <h4>Películas</h4>
+                    <div class="movies">
+                        <ul>
+                            <li>
+                                <a
+                                    href="https://www.imdb.com/title/tt0088763/"
+                                    target="_blank"
+                                >
+                                    Back to the future</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.imdb.com/title/tt0105236/"
+                                    target="_blank"
+                                >
+                                    Reservoir Dogs</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.imdb.com/title/tt0113247/"
+                                    target="_blank"
+                                >
+                                    La Haine</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <h3>Pasatiempos</h3>
+                    <p>Hacer comidas y preparar bebidas</p>
+                    <p>Jugar juegos en la PC</p>
+                  </section>
+                  <section>
+                    <h3>Lugares Preferidos</h3>
+                    <p>Uno es Dublin, Irlanda</p>
+                    <p>El caribe y la polinesia</p>
+                    <p>Villa Gessel; Argentina</p>
+                    <p>Florianopolis, Brasil</p>
+                  </section>
+                  <section>
+                    <h3>Intereses</h3>
+                    <p>La cocina</p>
+                    <p>El arte</p>
+                  </section>
+                  <section>
+                    <h3>Hobbies</h3>
+                    <p>Tocar la guitarra</p>
+                    <p>La Mecanica</p>
+                    <p>Leer</p>
+                  </section>
+            </div>
+        </nav>
+        <main class="content">
+            <section id="cuestionario">
+                <h2>Cuestionario</h2>
+                <p>Ya puedes iniciar el cuestionario!!!</p>
+                <section>
+                    <button class="button1" id="startQuizBtn">Iniciar Cuestionario</button>
+                    <div id="countdown" style="display:none;">10</div>
+                </section>
+            </section>
+        </main>
+        <script>
+            document.getElementById('startQuizBtn').addEventListener('click', startCountdown);
+
+            function startCountdown() {
+                document.getElementById('startQuizBtn').style.display = 'none';
+                const countdownElement = document.getElementById('countdown');
+                countdownElement.style.display = 'block';
+                let timeLeft = 10;
+                
+                const countdownTimer = setInterval(() => {
+                    if (timeLeft <= 0) {
+                        clearInterval(countdownTimer);
+                        window.location.href = 'quiz.html';
+                    } else {
+                        countdownElement.innerText = timeLeft;
+                        timeLeft -= 1;
+                    }
+                }, 1000);
+            }
+
+            function mostrarHora() {
+                const ahora = new Date();
+                
+                const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+                const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+                const diaSemana = diasSemana[ahora.getDay()];
+                const dia = ahora.getDate();
+                const mes = meses[ahora.getMonth()];
+                const año = ahora.getFullYear();
+
+                let horas = ahora.getHours();
+                let minutos = ahora.getMinutes();
+                let segundos = ahora.getSeconds();
+                const periodo = horas >= 12 ? 'PM' : 'AM';
+
+                // Convertir la hora a formato de 12 horas
+                horas = horas % 12;
+                horas = horas ? horas : 12; // La hora '0' debe mostrarse como '12'
+
+                // Formato de dos dígitos para minutos y segundos
+                minutos = minutos < 10 ? '0' + minutos : minutos;
+                segundos = segundos < 10 ? '0' + segundos : segundos;
+
+                const horaActual = `${diaSemana} ${dia} de ${mes} de ${año} ${horas}:${minutos}:${segundos} ${periodo}`;
+
+                document.getElementById('reloj').textContent = horaActual;
+            }
+
+            // Actualizar cada segundo
+            setInterval(mostrarHora, 1000);
+
+            // Mostrar la hora inicial al cargar la página
+            mostrarHora();
+        </script>
+    </div>
+    <footer>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"
+                ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="https://twitter.com" target="_blank"
+                ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="https://instagram.com" target="_blank"
+                ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://linkedin.com" target="_blank"
+                ><i class="fab fa-linkedin-in"></i
+            ></a>
+        </div>
+        <p>© 2024 FG Blog. Todos los derechos reservados.</p>
+        <div id="reloj"></div> <!-- Agregado el elemento reloj -->
+    </footer>
+</body>
+</html>

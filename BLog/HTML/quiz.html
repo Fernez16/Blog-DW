@@ -1,0 +1,174 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="tp, desarrollo, blog" />
+    <meta name="author" content="Fernez-Gomez" />
+    <title>Sobre Nosotros - F.G. BLOG</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>F.G. BLOG</h1>
+      <div class="isc">
+        <ul>
+          <a href="inicio.html">Inicio</a>
+          <a href="sobre-nosotros.html">Sobre nosotros</a>
+          <a href="contacto.html">Contacto</a>
+          <a href="cuestionario.html">Cuestionario</a>
+        </ul>
+      </div>
+    </header>
+<body>
+    <div class="titulo">
+        <h1>Cuestionario del Blog</h1>
+    </div>
+    <main>
+        <div id="result"></div>
+        <form id="quizForm" class="quiz">
+            <div class="preguntas">
+                <label>¿Cuántos integrantes tiene el grupo?</label>
+                <input type="number" name="q1" required>
+            </div>
+            <div class="preguntas">
+                <label>¿Quién es el integrante más joven?</label>
+                <input type="text" name="q2" required>
+            </div>
+            <div class="preguntas">
+                <label>¿De sus películas favoritas, cuál es francesa?</label>
+                <input type="text" name="q3" required>
+            </div>
+            <div class="preguntas">
+                <label>¿Cuál de los integrantes cree que tiene como hobby tocar la guitarra?</label>
+                <input type="text" name="q4" required>
+            </div>
+            <div class="preguntas">
+                <label>¿Lugar preferido de Europa?</label>
+                <input type="text" name="q5" required>
+            </div>
+            <div class="preguntas">
+                <label>¿Cuál crees que es el hobby de Martin?</label>
+                <input type="text" name="q6" required>
+            </div>
+            <div class="preguntas">
+                <label>¿Qué instrumento toca uno de ellos?</label>
+                <input type="text" name="q7" required>
+            </div>
+            <div class="preguntas">
+                <label>¿Cuál de los integrantes del grupo tiene la barba más poblada?</label>
+                <input type="text" name="q8" required>
+            </div>
+            <div class="preguntas">
+                <label>¿Además de un blog, qué queremos que sea?</label>
+                <input type="text" name="q9" required>
+            </div>
+            <div class="preguntas">
+                <label>¿Te gustó este blog?</label>
+                <input type="text" name="q10" required>
+            </div>
+            <button class="button2" type="submit">Enviar</button>
+        </form>
+        <div>
+            <ul>
+            <a href="quiz.html">Reiniciar cuestinoario</a>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <a href="inicio.html">Volver</a>
+            </ul>
+        </div>
+    </main>
+    <script src="../JS/quiz.js"></script>
+    <footer>
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="https://twitter.com" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="https://instagram.com" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://linkedin.com" target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+        </div>
+        <p>© 2024 FG Blog. Todos los derechos reservados.</p>
+        <div id="reloj"></div>
+        <!-- Agregado el elemento reloj -->
+      </footer>
+      <script>
+        function mostrarHora() {
+          const ahora = new Date();
+  
+          const diasSemana = [
+            "Domingo",
+            "Lunes",
+            "Martes",
+            "Miércoles",
+            "Jueves",
+            "Viernes",
+            "Sábado",
+          ];
+          const meses = [
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre",
+          ];
+  
+          const diaSemana = diasSemana[ahora.getDay()];
+          const dia = ahora.getDate();
+          const mes = meses[ahora.getMonth()];
+          const año = ahora.getFullYear();
+  
+          let horas = ahora.getHours();
+          let minutos = ahora.getMinutes();
+          let segundos = ahora.getSeconds();
+          const periodo = horas >= 12 ? "PM" : "AM";
+  
+          // Convertir la hora a formato de 12 horas
+          horas = horas % 12;
+          horas = horas ? horas : 12; // La hora '0' debe mostrarse como '12'
+  
+          // Formato de dos dígitos para minutos y segundos
+          minutos = minutos < 10 ? "0" + minutos : minutos;
+          segundos = segundos < 10 ? "0" + segundos : segundos;
+  
+          const horaActual = `${diaSemana} ${dia} de ${mes} de ${año} ${horas}:${minutos}:${segundos} ${periodo}`;
+  
+          document.getElementById("reloj").textContent = horaActual;
+        }
+  
+        // Funciones para cambiar y restaurar la imagen
+        function cambiarImagen() {
+          document.getElementById("cafemate").src = "../mesablogmate.jpg";
+        }
+  
+        function restaurarImagen() {
+          document.getElementById("cafemate").src = "../mesablogcafe.jpg";
+        }
+  
+        // Actualizar cada segundo
+        setInterval(mostrarHora, 1000);
+  
+        // Mostrar la hora inicial al cargar la página
+        mostrarHora();
+      </script>
+    </body>
+</html>
+
